@@ -29,3 +29,79 @@
 <br>
 
 <%= link_to 'New Course', new_course_path %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FinalProject2</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Courses</h1>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Website Name/School Name</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'Sign up', new_user_registration_path %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>Course number</h2>
+        <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <p>
+        <td><%= course.course_number %></td>
+        </p>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+    </div>
+    <div class="col-sm-8">
+      <h2>Course name</h2>
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <p>
+              <td><%= course.course_name %></td>
+              <td><%= link_to 'Show', course %></td>
+              <td><%= link_to 'Edit', edit_course_path(course) %></td>
+              <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </p>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <%= link_to 'New Course', new_course_path %>
+</div>
+
+</body>
+</html>
